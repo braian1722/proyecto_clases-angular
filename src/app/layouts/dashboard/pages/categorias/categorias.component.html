@@ -1,0 +1,32 @@
+<form [formGroup]="categoriasForm">
+    <mat-form-field >
+        <mat-label>Nombre</mat-label>
+        <input
+        formControlName="name"
+        matInput>
+
+        <button
+        (click)="addproductos()"
+        matSuffix mat-icon-button>
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-form-field>
+
+        @for (control of controlProdcutos.controls; track $index) {
+
+            <mat-form-field>
+                <mat-label>Nombre del producto</mat-label>
+                <input
+                [formControl]="getControl($index)"
+                matInput>
+                <button 
+                (click)="deleteControl($index)"
+                matSuffix mat-icon-button>
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+
+        <pre>{{categoriasForm.value|json}}</pre>
+    
+</form>
